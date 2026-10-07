@@ -1,0 +1,102 @@
+{
+  "entities": {
+    "users": {
+      "title": "users",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "avatar": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["uid"]
+    },
+    "conversations": {
+      "title": "conversations",
+      "description": "User conversation sessions",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "preview": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "title"]
+    },
+    "messages": {
+      "title": "messages",
+      "description": "Messages inside a conversation",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "role": { "type": "string" },
+        "content": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "fileName": { "type": "string" },
+        "thinkingDuration": { "type": "number" },
+        "modelUsed": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "role", "content"]
+    },
+    "recentSearches": {
+      "title": "recentSearches",
+      "description": "Recent searches and query history",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "query": { "type": "string" },
+        "category": { "type": "string" },
+        "preview": { "type": "string" },
+        "status": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "query"]
+    },
+    "userSettings": {
+      "title": "userSettings",
+      "description": "User settings and preferences",
+      "type": "object",
+      "properties": {
+        "theme": { "type": "string" },
+        "voiceGender": { "type": "string" },
+        "speechSpeed": { "type": "number" },
+        "selectedAiModel": { "type": "string" },
+        "enable3DMascot": { "type": "boolean" },
+        "autoReadResponse": { "type": "boolean" },
+        "hapticFeedback": { "type": "boolean" },
+        "updatedAt": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/users" },
+      "description": "User account document"
+    },
+    "/users/{userId}/conversations/{conversationId}": {
+      "schema": { "$ref": "#/entities/conversations" },
+      "description": "User conversation session"
+    },
+    "/users/{userId}/conversations/{conversationId}/messages/{messageId}": {
+      "schema": { "$ref": "#/entities/messages" },
+      "description": "Message within a conversation"
+    },
+    "/users/{userId}/recentSearches/{searchId}": {
+      "schema": { "$ref": "#/entities/recentSearches" },
+      "description": "Recent search entry"
+    },
+    "/users/{userId}/settings/{settingId}": {
+      "schema": { "$ref": "#/entities/userSettings" },
+      "description": "User settings document"
+    }
+  }
+}

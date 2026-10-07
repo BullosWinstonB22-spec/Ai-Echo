@@ -1,0 +1,6 @@
+{
+  "name": "Echo AI Assistant",
+  "description": "A futuristic AI assistant digital companion with 3D mascot, voice interaction, image analysis, and intelligent conversations.",
+  "requestFramePermissions": ["microphone", "camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
